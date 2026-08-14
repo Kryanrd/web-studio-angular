@@ -1,4 +1,4 @@
-@import "../../../../assets/styles/variables";
+@import "../../../../styles/variables";
 
 .comment-item {
     width: 854px;
@@ -67,13 +67,25 @@
                 justify-content: center;
             }
 
-            &.active {
+            &.active.like{
+                
                 .comment-item-action-count {
                     color: $light-blue-text-color;
                 }
 
                 .comment-item-action-icon svg path{
                     stroke: $light-blue-text-color;
+                }
+            }
+
+            &.active.dislike{
+                
+                .comment-item-action-count {
+                    color: red;
+                }
+
+                .comment-item-action-icon svg path{
+                    stroke: red;
                 }
             }
         }

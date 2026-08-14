@@ -11,8 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CommentItemComponent implements OnInit {
 
-
-  @Input() comment!: CommentType;
+  @Input() comment: CommentType;
   currentLikes: number = 0;
   currentDislikes: number = 0;
   currentAction: UserActionType | null = null;
@@ -23,11 +22,23 @@ export class CommentItemComponent implements OnInit {
     this.currentAction = value;
   }
 
+  constructor(private commentService: CommentService, private _snackBar: MatSnackBar) {
+    this.comment = {
+      id: '',
+      text: '',
+      date: '',
+      likesCount: 0,
+      dislikesCount: 0,
+      user: {
+        id: '',
+        name: ''
+      }
+    }
+  }
+
   get userAction(): UserActionType | null {
     return this._userAction;
   }
-
-  constructor(private commentService: CommentService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.currentLikes = this.comment.likesCount;

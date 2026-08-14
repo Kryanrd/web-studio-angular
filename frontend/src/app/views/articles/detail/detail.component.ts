@@ -16,7 +16,7 @@ import { UserActionType } from 'src/types/user-action.type';
 })
 export class DetailComponent implements OnInit {
 
-  article!: ArticleType;
+  article: ArticleType;
   relatedArticles: ArticleType[] = [];
   isLogged: boolean = false;
   allCommentsCount: number = 0;
@@ -33,6 +33,15 @@ export class DetailComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private cdr: ChangeDetectorRef) {
     this.isLogged = this.authService.getIsLoggedIn();
+    this.article = {
+      id: '',
+      title: '',
+      description: '',
+      image: '',
+      date: '',
+      category: '',
+      url: ''
+    };
   }
 
   ngOnInit(): void {

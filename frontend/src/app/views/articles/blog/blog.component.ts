@@ -46,7 +46,7 @@ export class BlogComponent implements OnInit {
       });
   }
 
-  private loadArticles() {
+  private loadArticles(): void {
     this.articleService.getAllArticles(this.activeParams)
       .subscribe((data) => {
         this.pages = [];
@@ -89,13 +89,13 @@ export class BlogComponent implements OnInit {
     this.toggleCategory(filter.urlParam);
   }
 
-  openPage(page: number) {
+  openPage(page: number): void {
     this.activeParams.page = page;
     this.router.navigate(['/blog'], {
       queryParams: this.activeParams
     });
   }
-  openPrevPage() {
+  openPrevPage(): void {
     const currentPage = this.activeParams.page || 1;
     if (currentPage > 1) {
       this.activeParams.page = currentPage - 1;

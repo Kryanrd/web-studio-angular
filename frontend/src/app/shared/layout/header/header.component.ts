@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  logout() {
+  logout(): void {
     this.authService.logout()
       .subscribe({
         next: () => {
@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       })
   }
 
-  doLogOut() {
+  doLogOut(): void {
     this.authService.removeTokens();
     this.authService.userId = null;
     this.authService.clearUserName();

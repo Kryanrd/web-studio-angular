@@ -66,18 +66,18 @@ export class AuthService {
     return this.http.get<{ id: string, name: string, email: string }>(environment.api + 'users');
   }
 
-  public getIsLoggedIn() {
+  public getIsLoggedIn(): boolean {
     return this.isLogged;
   }
 
-  public setTokens(accessToken: string, refreshToken: string) {
+  public setTokens(accessToken: string, refreshToken: string): void {
     localStorage.setItem(this.accessTokenKey, accessToken);
     localStorage.setItem(this.refreshTokenKey, refreshToken);
     this.isLogged = true;
     this.isLogged$.next(true);
   }
 
-  public removeTokens() {
+  public removeTokens(): void {
     localStorage.removeItem(this.accessTokenKey);
     localStorage.removeItem(this.refreshTokenKey);
     localStorage.removeItem(this.userNameKey);

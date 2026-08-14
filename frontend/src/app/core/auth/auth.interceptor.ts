@@ -14,7 +14,6 @@ export class AuthIntercepror implements HttpInterceptor {
     constructor(private authService: AuthService, private router: Router) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        // this.loaderService.show();
         const tokens = this.authService.getTokens();
         if (tokens && tokens.accessToken) {
             const authReq = req.clone({
@@ -29,7 +28,6 @@ export class AuthIntercepror implements HttpInterceptor {
                         }
                         return throwError(() => error);
                     }),
-                    // finalize(() => this.loaderService.hide())
                 );
         }
 
