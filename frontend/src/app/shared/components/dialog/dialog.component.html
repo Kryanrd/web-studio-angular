@@ -1,0 +1,68 @@
+<div class="dialog" *ngIf="!isSuccess; else successBlock">
+    <div class="close-button" (click)="close()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="1.93562" y1="2.6499" x2="13.9564" y2="14.6707" stroke="#BEBEBE" stroke-linecap="round" />
+            <line x1="13.9236" y1="2.62971" x2="1.90277" y2="14.6505" stroke="#BEBEBE" stroke-linecap="round" />
+        </svg>
+    </div>
+    <div class="dialog-container">
+        <div [formGroup]="consultationForm" class="form">
+            <div class="form-title">{{title}}</div>
+            <div class="form-inputs">
+                <div class="form-input" *ngIf="data.mode === 'service'">
+                    <input type="text" class="input" placeholder="Тип услуги" [value]="data.serviceType" disabled>
+                </div>
+                <div class="form-input">
+                    <input type="text" class="input" placeholder="Ваше имя" formControlName="name" [ngStyle]="{'border-color': consultationForm.get('name')?.invalid && 
+                        (consultationForm.get('name')?.dirty || consultationForm.get('name')?.touched) ? 'red' : ''}">
+                    <div class="error-message"
+                        *ngIf="consultationForm.get('name')?.invalid && (consultationForm.get('name')?.dirty || consultationForm.get('name')?.touched)">
+                        <div class="text-danger" *ngIf="consultationForm.get('name')?.errors?.['required']">
+                            Поле Ваше имя обязательно.
+                        </div>
+                        <div class="text-danger" *ngIf="consultationForm.get('name')?.errors?.['pattern']">
+                            Имя не корректно.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-input">
+                    <input type="text" class="input" placeholder="Ваш номер телефона" formControlName="phone"
+                        [ngStyle]="{'border-color': consultationForm.get('phone')?.invalid && 
+                        (consultationForm.get('phone')?.dirty || consultationForm.get('phone')?.touched) ? 'red' : ''}">
+                    <div class="error-message"
+                        *ngIf="consultationForm.get('phone')?.invalid && (consultationForm.get('phone')?.dirty || consultationForm.get('phone')?.touched)">
+                        <div class="text-danger" *ngIf="consultationForm.get('phone')?.errors?.['required']">
+                            Поле Ваш номер телефона обязательно.
+                        </div>
+                        <div class="text-danger" *ngIf="consultationForm.get('phone')?.errors?.['pattern']">
+                            Телефон не корректен.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-button">
+                <button class="button" [disabled]="consultationForm.invalid" (click)="submit()">{{ buttonText
+                    }}</button>
+            </div>
+            <div class="invalid-response-message" *ngIf="errorMessage">
+                <div class="text-danger">{{ errorMessage }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #successBlock>
+    <div class="dialog success-dialog">
+        <div class="close-button" (click)="close()">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="1.93562" y1="2.6499" x2="13.9564" y2="14.6707" stroke="#BEBEBE" stroke-linecap="round" />
+                <line x1="13.9236" y1="2.62971" x2="1.90277" y2="14.6505" stroke="#BEBEBE" stroke-linecap="round" />
+            </svg>
+        </div>
+        <div class="dialog-container success-content">
+            <h2 class="dialog-title">Спасибо за вашу заявку!</h2>
+            <p class="success-text">Мы свяжемся с вами при первой же возможности.</p>
+            <button class="button" (click)="close()">Окей</button>
+        </div>
+    </div>
+</ng-template>

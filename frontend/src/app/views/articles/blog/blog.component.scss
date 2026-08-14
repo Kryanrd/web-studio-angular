@@ -1,0 +1,172 @@
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/variables";
+
+
+.blog {
+    margin-top: 80px;
+    margin-bottom: 120px;
+
+    .container {
+        .blog-title {
+            @include head-lora-38;
+            margin-bottom: 40px;
+        }
+
+        .blog-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 40px;
+
+            .blog-applied-filters {
+                display: flex;
+                flex-wrap: wrap;
+
+                .blog-applied-filter {
+                    display: flex;
+                    align-items: center;
+                    font-size: 16px;
+                    color: $light-blue-text-color;
+                    border: 2px solid $light-blue-text-color;
+                    background-color: #FFFFFF;
+                    border-radius: 5px;
+                    padding: 8px 20px;
+                    margin-right: 20px;
+
+                    a {
+                        cursor: pointer;
+                        margin-left: 8px;
+                        display: flex;
+                    }
+                }
+            }
+
+            .blog-filter {
+                width: 190px;
+                min-width: 190px;
+                box-sizing: border-box;
+                position: relative;
+                cursor: pointer;
+                font-size: 16px;
+
+                .blog-filter-head {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 12px 0 12px 23px;
+
+                    span {
+                        margin-right: 8px;
+                        color: $blue-text-color;
+                    }
+                }
+
+                .blog-filter-body {
+                    position: absolute;
+                    width: 100%;
+                    box-sizing: border-box;
+                    z-index: 3;
+                    display: none;
+                    padding: 12px 23px;
+                    background: #FFFFFF;
+                    border-radius: 0 0 5px 5px;
+                    border: 2px solid #B9D5FD;
+                    color: #BEBEBE;
+
+                    .blog-filter-item {
+                        margin-bottom: 14px;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .blog-filter-item-sign {
+                            font-size: 24px;
+                        }
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+
+                        &.active {
+                            color: $blue-text-color;
+                        }
+                    }
+                }
+
+                &.open {
+                    width: 257px;
+                    min-width: 257px;
+
+                    .blog-filter-head {
+                        color: $blue-text-color;
+                        background: $light-blue-text-color;
+                        border-radius: 5px 5px 0 0;
+                        padding-right: 23px;
+                    }
+
+                    .blog-filter-body {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .blog-articles {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px 24px;
+        }
+
+        .pagination {
+            margin-top: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .pagination-arrow {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &.disabled {
+                    cursor: not-allowed;
+
+                    svg rect {
+                        fill: url(#pattern0_25634_776);
+                    }
+                }
+            }
+
+            .pagination-pages {
+                margin-left: 40px;
+                margin-right: 40px;
+                display: flex;
+                align-items: center;
+
+                a.pagination-page {
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 28px;
+                    height: 46px;
+                    margin-right: 20px;
+                    cursor: pointer;
+                    font-size: 20px;
+                    color: $blue-text-color;
+
+                    &.active {
+                        color: $light-blue-text-color;
+                    }
+
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+
+    }
+}

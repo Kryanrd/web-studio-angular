@@ -1,0 +1,66 @@
+<section class="signup" [formGroup]="signupForm">
+    <div class="container">
+        <div class="form">
+            <div class="form-title">
+                Регистрация на сайте
+            </div>
+            <div class="form-inputs">
+                <div class="form-input">
+                    <input type="text" class="input" placeholder="Имя" formControlName="name" [ngStyle]="{'border-color': signupForm.get('name')?.invalid && 
+                        (signupForm.get('name')?.dirty || signupForm.get('name')?.touched) ? 'red' : ''}">
+                    <div class="error-message"
+                        *ngIf="signupForm.get('name')?.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)">
+                        <div class="text-danger" *ngIf="signupForm.get('name')?.errors?.['required']">
+                            Поле Имя обязательно.
+                        </div>
+                        <div class="text-danger" *ngIf="signupForm.get('name')?.errors?.['pattern']">
+                            Имя должно иметь только русские буквы.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-input">
+                    <input type="text" class="input" placeholder="Электронная почта" formControlName="email" [ngStyle]="{'border-color': signupForm.get('email')?.invalid && 
+                        (signupForm.get('email')?.dirty || signupForm.get('email')?.touched) ? 'red' : ''}">
+                    <div class="error-message"
+                        *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)">
+                        <div class="text-danger" *ngIf="signupForm.get('email')?.errors?.['required']">
+                            Поле Электронная почта обязательно.
+                        </div>
+                        <div class="text-danger" *ngIf="signupForm.get('email')?.errors?.['email']">
+                            Электронная почта не корректна.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-input">
+                    <input type="password" class="input" placeholder="Пароль" formControlName="password" [ngStyle]="{'border-color': signupForm.get('password')?.invalid && 
+                        (signupForm.get('password')?.dirty || signupForm.get('password')?.touched) ? 'red' : ''}">
+                    <div class="error-message"
+                        *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)">
+                        <div class="text-danger" *ngIf="signupForm.get('password')?.errors?.['required']">
+                            Поле Пароль обязательно.
+                        </div>
+                        <div class="text-danger" *ngIf="signupForm.get('password')?.errors?.['pattern']">
+                            Пароль не надежен.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-checkbox">
+                    <input type="checkbox" id="agree" formControlName="agree">
+                    <label for="agree">
+                        Я принимаю <a routerLink="/legal" fragment="terms">условия пользовательского соглашения</a> и даю <a routerLink="/legal" fragment="privacy">согласие на
+                            обработку персональных данных.</a>
+                    </label>
+                </div>
+            </div>
+            <div class="form-button">
+                <button class="button" (click)="signup()" [disabled]="signupForm.invalid">Зарегистрироваться</button>
+            </div>
+            <div class="form-link">
+                Уже есть аккаунт? <a routerLink="/login">Войдите</a>
+            </div>
+        </div>
+        <div class="page-image">
+            <img src="/assets/images/pages/signup-image.png" alt="Signup">
+        </div>
+    </div>
+</section>

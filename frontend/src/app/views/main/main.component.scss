@@ -1,0 +1,433 @@
+@import "../../../assets/styles/variables";
+@import "../../../assets/styles/mixins";
+
+
+.stocks {
+    margin-bottom: 120px;
+
+    .container {
+        .stocks-carousel {
+            position: relative;
+            width: 100%;
+            display: block;
+            overflow: visible;
+
+            .stock-item {
+                display: flex;
+                overflow: hidden;
+                background-repeat: no-repeat;
+                background-position: right;
+                height: 500px;
+
+
+                .stock-item-content {
+                    flex: 1;
+                    padding: 100px 0 98px 80px;
+                    background-color: #B9D5FD;
+                    mask: url(#ellipseMask);
+                    -webkit-mask: url(#ellipseMask);
+                    mask-size: 1405px 1404px;
+                    -webkit-mask-size: 1405px 1404px;
+                    mask-position: 0 0;
+                    -webkit-mask-position: 0 0;
+
+                    .stock-item-content-name {
+                        font-weight: 600;
+                        font-size: 12px;
+                        text-transform: uppercase;
+                        color: $light-blue-text-color;
+                        letter-spacing: 40%;
+                    }
+
+                    .stock-item-content-title {
+                        font-family: 'Lora', sans-serif;
+                        font-weight: 400;
+                        font-size: 50px;
+                        line-height: 130%;
+                        color: #FFFFFF;
+                        max-width: 610px;
+
+                        span {
+                            color: $light-blue-text-color;
+                        }
+                    }
+
+                    .stock-item-content-description {
+                        font-size: 24px;
+                        line-height: 130%;
+                        color: #FFFFFF;
+                        margin-top: 20px;
+                        margin-bottom: 50px;
+                        max-width: 456px;
+                    }
+
+                    .stock-item-content-action {
+                        margin-top: 40px;
+
+                        .button {
+                            width: 163px;
+
+                        }
+                    }
+                }
+            }
+
+            .stocks-arrows {
+                display: flex;
+
+                a {
+                    top: calc(50% - 5px);
+                    display: flex;
+                    position: absolute;
+                    z-index: 10;
+                    cursor: pointer;
+
+                    &.move-backward {
+                        left: 11px;
+                    }
+
+                    &.move-forward {
+                        right: 11px;
+                    }
+                }
+            }
+
+            ::ng-deep .owl-dots {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 10;
+                display: flex;
+                gap: 20px;
+
+                .owl-dot {
+                    outline: none;
+
+                    span {
+                        display: block;
+                        width: 10px;
+                        height: 10px;
+                        background-color: transparent;
+                        border-radius: 50%;
+                        border: 1px solid #ffffff;
+                    }
+
+                    &.active span {
+                        background-color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.services {
+    .container {
+        .services-title {
+            @include head-lora-38;
+            margin-bottom: 40px;
+        }
+
+        .services-list {
+            display: flex;
+            gap: 25px;
+
+            .services-item {
+                width: 291px;
+                height: 498px;
+                box-sizing: border-box;
+
+                .services-item-image {
+                    width: 291px;
+                    height: 291px;
+                    border-radius: 5px;
+                    background-position: center;
+                    background-size: cover;
+                    margin-bottom: 15px;
+                }
+
+                .services-item-content {
+
+                    .services-item-content-title {
+                        font-weight: 500;
+                        font-size: 20px;
+                        color: $light-blue-text-color;
+                        margin-bottom: 10px;
+                    }
+
+                    .services-item-content-text {
+                        height: 90px;
+                        font-size: 14px;
+                        line-height: 130%;
+                        color: $blue-text-color;
+                        margin-bottom: 15px;
+                        max-width: 286px;
+                    }
+
+                    .services-item-content-details {
+                        display: flex;
+                        align-items: center;
+
+                        .services-item-content-details-price {
+                            font-weight: 600;
+                            font-size: 20px;
+                            color: $light-blue-text-color;
+                            margin-right: 21px;
+                        }
+
+                        .services-item-content-details-action {
+                            .button {
+                                width: 163px;
+                                padding: 15px 33px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.info {
+    margin-top: 120px;
+    margin-bottom: 120px;
+
+    .container {
+        display: flex;
+
+        .info-content {
+            margin-left: 68px;
+
+            .info-content-head {
+                @include head-lora-38;
+                margin-bottom: 20px;
+            }
+
+            .info-content-description {
+                line-height: 130%;
+                font-size: 14px;
+                color: #1E1A2B;
+                margin-bottom: 40px;
+                max-width: 633px;
+
+                span {
+                    font-weight: 500;
+                }
+            }
+
+            .info-advantages {
+                .info-advantages-head {
+                    font-family: 'Lora', sans-serif;
+                    font-weight: 400;
+                    font-size: 26px;
+                    color: $light-blue-text-color;
+                }
+
+                .info-advantages-list {
+                    margin-top: 20px;
+                    display: grid;
+                    grid-template-columns: repeat(2, 316px);
+
+                    gap: 20px 71px;
+
+                    .info-advantages-item {
+                        display: flex;
+                        align-items: center;
+                        gap: 20px;
+
+                        .info-advantages-item-number {
+                            flex-shrink: 0;
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            background: #B9D5FD;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            span {
+                                font-family: 'Lora', sans-serif;
+                                font-weight: 500;
+                                font-size: 50px;
+                                color: $light-blue-text-color;
+                                position: absolute;
+                                top: 2px;
+                            }
+                        }
+
+                        .info-advantages-item-description {
+                            font-size: 14px;
+                            line-height: 130%;
+                            color: #1E1A2B;
+                            max-width: 250px;
+
+                            span {
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.articles {
+    .container {
+        .articles-title {
+            @include head-lora-38;
+            margin-bottom: 40px;
+            line-height: 130%;
+        }
+
+        .articles-list {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .articles-link {
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            cursor: pointer;
+
+            .articles-link-text {
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 500;
+                font-size: 20px;
+                color: $light-blue-text-color;
+                margin-right: 14px;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.reviews {
+    margin-top: 120px;
+    margin-bottom: 120px;
+
+    .container {
+
+        .reviews-title {
+            @include head-lora-38;
+            margin-left: 24px;
+            line-height: 130%;
+
+        }
+
+        .reviews-carousel {
+            position: relative;
+            margin-top: 20px;
+
+            .review-item {
+                width: 396px;
+                height: 267px;
+                padding: 30px;
+                border: 2px solid $light-blue-text-color;
+                border-radius: 5px;
+                box-sizing: border-box;
+
+                .review-item-head {
+                    display: flex;
+                    align-items: center;
+
+                    .review-item-image {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        background-position: center;
+                        background-size: cover;
+                        margin-right: 26px;
+                    }
+
+                    .review-item-name {
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: 600;
+                        font-size: 18px;
+                        color: $light-blue-text-color;
+                    }
+                }
+
+                .review-item-text {
+                    margin-top: 15px;
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 140%;
+                    color: $blue-text-color;
+                }
+            }
+
+            .reviews-arrows {
+                display: flex;
+
+                a {
+                    top: calc(50% - 5px);
+                    display: flex;
+                    position: absolute;
+                    cursor: pointer;
+
+                    &.move-backward {
+                        left: -24px;
+                    }
+
+                    &.move-forward {
+                        right: -24px;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+.contacts {
+    margin-bottom: 120px;
+
+    .container {
+        display: flex;
+
+        .contacts-info {
+            margin-left: 26px;
+
+            .contacts-info-title {
+                @include head-lora-38;
+                line-height: 130%;
+                margin-bottom: 20px;
+            }
+
+            .contacts-info-block {
+                max-width: 501px;
+                margin-bottom: 20px;
+
+                .contacts-info-block-title {
+                    font-family: 'Montserrat', sans-serif;
+                    font-weight: 500;
+                    font-size: 20px;
+                    color: $light-blue-text-color;
+                    margin-bottom: 10px;
+                }
+
+                .contacts-info-block-text {
+                    font-family: 'Montserrat';
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 130%;
+                    color: $blue-text-color;
+                }
+
+                .contacts-info-block-social {
+                    a {
+                        margin-right: 20px;
+                    }
+                }
+
+            }
+        }
+    }
+}

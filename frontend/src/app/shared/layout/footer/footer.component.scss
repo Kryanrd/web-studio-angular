@@ -1,0 +1,83 @@
+@import "../../../../assets/styles/variables";
+
+.footer {
+    padding-top: 40px;
+    padding-bottom: 54px;
+    background-color: #B9D5FD;
+    font-size: 16px;
+
+    .container {
+
+        .footer-menu {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+
+            .footer-menu-items {
+                margin-left: 40px;
+
+                nav ul {
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+
+                    li {
+                        margin-right: 20px;
+                        list-style: none;
+
+                        a {
+                            color: $blue-text-color;
+                            cursor: pointer;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer-info {
+            display: flex;
+
+            .footer-info-block {
+                margin-right: 60px;
+
+                &:first-child {
+                    max-width: 253px;
+                }
+
+                .footer-info-block-title {
+                    font-weight: 500;
+                    color: $light-blue-text-color;
+                    margin-bottom: 10px;
+                }
+
+                .footer-info-block-content {
+                    .footer-info-block-content-text {
+                        color: $blue-text-color;
+                        line-height: 130%;
+                    }
+
+                    .button {
+                        width: 153px;
+                        margin-top: 10px;
+                        padding: 10px;
+                        font-weight: 500;
+                        font-size: 12px;
+                    }
+
+                    .footer-info-block-content-links {
+                        padding-top: 5px;
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                    }
+                }
+            }
+        }
+
+        .footer-rights {
+            margin-top: 6px;
+            color: $light-blue-text-color;
+        }
+    }
+}

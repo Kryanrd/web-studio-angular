@@ -1,0 +1,74 @@
+@import "../../../../assets/styles/variables";
+@import "../../../../assets/styles/mixins";
+@import "../../../../assets/styles/auth-form";
+
+.dialog {
+    padding: 95px 0 94px 0;
+    border: 2px solid $light-blue-text-color;
+    position: relative;
+
+    .close-button {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        cursor: pointer;
+    }
+
+    .dialog-container {
+        max-width: 422px;
+        margin: 0 auto;
+        text-align: center;
+
+        .form {
+            margin: 0;
+            margin-top: 20px;
+
+            .form-title {
+                line-height: 130%;
+                margin-bottom: 20px;
+                font-size: 38px;
+            }
+
+            .form-inputs {
+                margin-bottom: 20px;
+
+                .input {
+                    color: $light-blue-text-color;
+                }
+            }
+
+            .invalid-response-message {
+                margin-top: 10px;
+            }
+        }
+    }
+
+    &.success-dialog {
+        padding: 163px 0;
+
+        .dialog-container {
+            max-width: 443px;
+
+            &.success-content {
+                .dialog-title {
+                    @include head-lora-38;
+                    margin-bottom: 20px;
+                }
+
+                .success-text {
+                    font-weight: 500;
+                    font-family: 14px;
+                    color: #1E1A2B;
+                    margin-bottom: 40px;
+                }
+                .button {
+                    width: 73px;
+                    padding: 10px 20px;
+                    text-align: center;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
