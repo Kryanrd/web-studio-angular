@@ -21,9 +21,21 @@ MongoDBConnection.getConnection((error, connection) => {
     }
     const app = express();
 
+    const frontendUrl = process.env.FRONTEND_URL;
+
+    app.use(cors({
+        origin: frontendUrl
+            ? [frontendUrl, 'http://localhost:4200']
+            : '*'
+    }));
+
     app.use(express.static(path.join(__dirname, 'public')));
     app.use(express.json());
-    app.use(cors());
+
+    // Проверка доступности сервера
+    app.get('/health', (req, res) => {
+        res.status(200).json({ status: 'ok' });
+    });
 
     passport.use(new JwtStrategy({
         jwtFromRequest: ExtractJwt.fromHeader('x-auth'),
@@ -39,7 +51,7 @@ MongoDBConnection.getConnection((error, connection) => {
 
         let user = null;
         try {
-            user = await UserModel.findOne({_id: payload.id});
+            user = await UserModel.findOne({ _id: payload.id });
         } catch (e) {
             console.log(e);
             const error = new Error('Ошибка базы данных при проверке токена');
@@ -78,11 +90,11 @@ MongoDBConnection.getConnection((error, connection) => {
     });
 
     app.use(function (err, req, res, next) {
-        res.status(err.statusCode || err.status || 500).send({error: true, message: err.message});
+        res.status(err.statusCode || err.status || 500).send({ error: true, message: err.message });
     });
 
-    app.listen(config.port, () =>
-        console.log(`Server started`)
+    app.listen(config.port, '0.0.0.0', () =>
+        console.log(`Server started on port ${config.port}`)
     );
 })
 
