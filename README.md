@@ -69,6 +69,10 @@
 - CORS
 - migrate-mongo
 
+## Демо
+
+[Открыть АйтиШторм](https://itstorm-frontend.onrender.com)
+
 ## Запуск проекта
 
 Для локального запуска потребуются:
